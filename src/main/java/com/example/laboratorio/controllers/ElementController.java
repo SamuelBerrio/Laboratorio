@@ -45,7 +45,9 @@ public class ElementController implements Initializable {
     private TableColumn<?, ?> tableMaterialElement;
 
     @FXML
-    private TableColumn<?, ?> tableNameElement;
+    private TableColumn<Element, String> tableNameElement;
+    @FXML
+    public TableColumn <Element, Double> tablePriceElement;
 
     @FXML
     private TableView<Element> tblElement;

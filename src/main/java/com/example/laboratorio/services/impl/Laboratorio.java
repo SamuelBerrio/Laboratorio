@@ -10,6 +10,7 @@ public class Laboratorio implements ModelFactoryControllerService {
         elementService=(ElementService) new ElementServiceImpl();
 
     }
+    public UserService getUserService() {return userService;}
     public ElementService getElementService() {return elementService;}
 
 }

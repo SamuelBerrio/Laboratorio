@@ -1,14 +1,34 @@
 package com.example.laboratorio.controllers;
 
+import com.example.laboratorio.model.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TreeTableColumn;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
-public class StudentController {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.ResourceBundle;
 
+public class StudentController implements Initializable {
+
+    @FXML
+    private TableView<Student> tbStudent;
+    @FXML
+    private TableColumn<Student, String> careerColStu;
+    @FXML
+    private TableColumn<Student, String> emailColStu;
+    @FXML
+    private TableColumn<Student, Integer> semesterColStu;
+    @FXML
+    private TableColumn<Student, Integer> loanColStu;
+    @FXML
+    private TableColumn<Student, String> nameColStu;
+    @FXML
+    private TableColumn<Student, String> idColStu;
     ModelFactoryController mfc = ModelFactoryController.getInstance();
 
     @FXML
@@ -27,16 +47,10 @@ public class StudentController {
     private TextField numberStudent;
 
     @FXML
-    public ComboBox comboxCareer;
+    private ComboBox<String> comboxCareer;
 
     @FXML
-    private TreeTableColumn<?, ?> tableCareerStudent;
-
-    @FXML
-    private TreeTableColumn<?, ?> tableNameStudent;
-
-    @FXML
-    private TreeTableColumn<?, ?> tableYearsStudent;
+    private TextField semesterStudent;
 
     @FXML
     void elementChange(ActionEvent event) {
@@ -49,6 +63,21 @@ public class StudentController {
     }
 
     public void addStudentBtn(ActionEvent actionEvent) {
+        mfc.btnAddStudent(idStudent.getText(), nameStudent.getText(), emailStudent.getText(), numberStudent.getText(), comboxCareer.getSelectionModel().getSelectedItem(), Integer.parseInt(semesterStudent.getText()));
+        tbStudent.setItems(mfc.laboratorio.getUserService().getStudentObservableList());
+        tbStudent.refresh();
+    }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        idColStu.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nameColStu.setCellValueFactory(new PropertyValueFactory<>("name"));
+        emailColStu.setCellValueFactory(new PropertyValueFactory<>("email"));
+        careerColStu.setCellValueFactory(new PropertyValueFactory<>("career"));
+        semesterColStu.setCellValueFactory(new PropertyValueFactory<>("semester"));
+        loanColStu.setCellValueFactory(new PropertyValueFactory<>("loan"));
+        ArrayList<String> list = new ArrayList<>();
+        Collections.addAll(list, "Software", "Industrial", "civil");
+        comboxCareer.getItems().addAll(list);
     }
 }

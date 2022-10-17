@@ -23,4 +23,10 @@ public class ModelFactoryController {
     public ObservableList<Element> getElementArrayList(){
         return laboratorio.getElementService().getObservableListElement();
     }
+
+    //Funcion Student
+    @Override
+    public void btnAddStudent(String id, String name, String email, String number, String career, Integer semester){
+        laboratorio.getUserService().addStudent(id, name, email, number,  career, semester);
+    }
 }
