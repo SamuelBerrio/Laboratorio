@@ -1,4 +1,5 @@
 package com.example.laboratorio.controllers;
+import com.example.laboratorio.model.Element;
 import com.example.laboratorio.services.impl.Laboratorio;
 import javafx.collections.ObservableList;
 
@@ -19,7 +20,7 @@ public class ModelFactoryController {
     public void buttonAddE(String name,String amount,String material,Double price){
         laboratorio.getElementService().buttonAddE(name,amount,material,price);
     }
-    public ObservableList<Object> getElementArrayList(){
+    public ObservableList<Element> getElementArrayList(){
         return laboratorio.getElementService().getObservableListElement();
     }
 }

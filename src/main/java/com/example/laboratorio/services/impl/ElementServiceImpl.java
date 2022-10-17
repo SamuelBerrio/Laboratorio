@@ -28,9 +28,7 @@ public class ElementServiceImpl implements ElementService {
         elementObservableList.add(new Element(name, amount, material, price));
         Element element = new Element(name, amount, material, price);
         listElement.add(element);
-
     }
-
 
     @Override
     public ObservableList<Element> getObservableListElement() {

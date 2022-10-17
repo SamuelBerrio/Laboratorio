@@ -3,10 +3,13 @@ package com.example.laboratorio.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeTableColumn;
 
 public class StudentController {
+
+    ModelFactoryController mfc = ModelFactoryController.getInstance();
 
     @FXML
     private Button addStudent;
@@ -22,6 +25,9 @@ public class StudentController {
 
     @FXML
     private TextField numberStudent;
+
+    @FXML
+    public ComboBox comboxCareer;
 
     @FXML
     private TreeTableColumn<?, ?> tableCareerStudent;
@@ -42,4 +48,7 @@ public class StudentController {
 
     }
 
+    public void addStudentBtn(ActionEvent actionEvent) {
+
+    }
 }
